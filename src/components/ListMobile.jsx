@@ -7,27 +7,26 @@ import  '../App.css';
 
 function ListMobile() {
   let [state, setState] = useState([]);
-
   async function getData() {
     let response = await PostService.getAll();
-    console.log(response);
     setState(response);
   }
 
   useEffect(() => {
     getData()
   }, [])
-  
+
 
   return (
-
     <div className="list-mobile">
       {state.map((item, index) => 
-      <ListMobileItem item={item}/>
+      <ListMobileItem item={item} key={index}/>
       )}
 
     </div>
   )
 }
+
+
 
 export default ListMobile;
